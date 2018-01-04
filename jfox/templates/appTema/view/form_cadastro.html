@@ -1,0 +1,64 @@
+<!--begin form-->
+{headers}
+<script type="text/javascript">
+    $(function(){
+        <!--begin js-->
+        {js_code}
+        <!--end-->
+    })
+
+    $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->]").submit(function(event){
+        event.preventDefault();
+        $.submit_button = $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->] input[type='submit']");
+        $.orig_value = $.submit_button.attr('value');
+        if($.submit_button.length){
+            $.submit_button.attr('value','Aguarde...');
+            $.submit_button.attr('disabled',true);
+        }
+        $.post($(this).attr('action'),$(this).serialize(),function(json){
+            $("#{div_id} .erro").html(json.msg_erro);
+            if($.submit_button.length){
+                $.submit_button.attr('value',$.orig_value);
+                $.submit_button.attr('disabled',false);
+            } 
+            var id = json.id;
+            var pag = json.pag;
+            if(id){
+                var show_redirect_message = -!show_redirect_message!-;
+                var auto_redirect = -!auto_redirect!-;
+                var url_left = encodeURIComponent("{controller_name}/listar?pag=" + pag + "&item=" + id );
+                var url_body = encodeURIComponent("{controller_name}/update?id=" + id);
+                var url_reg = "{SITE_PATH}#{controller_name}?l=" + url_left + "&b=" + url_body;
+                var message = "Registro <b>" + id + "</b> salvo com exito... ";
+                if(show_redirect_message)
+                    message = message + "<p><a style=\"color:#184d92;\" href=\"" +url_reg+ "\">Acessar Registro</a></p>"
+                $.messageBox("registro",message,4000);
+                if(auto_redirect)
+                    window.location.replace(url_reg);
+                var target = '{target_url}';
+                if(target && !auto_redirect){
+                    $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->]").parent().parent().load(target);
+                }
+                    
+            }
+        },'json');
+    });
+    $('form input[type$="reset"]').click(function(){
+        $("#{div_id} .erro").html("");
+    })
+</script>
+
+
+<div class="cadastro" id="{div_id}">
+    <h3>{title}</h3>
+    <div>{message}</div>
+    {above_form}
+    <form {form_properties}>
+        <!--begin form_data--><!--glue-->
+        <div class="field" id="field_{name}">{label}{field}</div>
+        <!--end-->
+        <div class="erro"></div>
+    </form>
+    {below_form}
+</div>
+<!--end-->

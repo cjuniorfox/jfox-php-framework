@@ -1,0 +1,72 @@
+.tela_saldo{
+    background-color: #fff;
+    min-height: 100%;
+    padding: 5px;
+    margin:0px;
+}
+.saldo-item{
+    display: inline-block;
+    min-width: 100px;
+}
+.tela_extrato{
+    border-collapse:collapse;
+    margin: 0 auto;
+    border-radius: 7px;
+    overflow: hidden;
+    font-size: 9pt;
+
+}
+.tela_extrato thead tr th{
+    background: -webkit-linear-gradient(top, #c3cdd7, #6f7985);
+    text-shadow: #c5ccd9 0.1em 0.1em 0.1em;
+    text-align:center;
+    border: none;
+    padding:6px;
+
+}
+
+.tela_extrato tr td, .tela_extrato tr th{
+    border-right:solid 1px #797e92;
+    color: #27313d;
+    padding:1px;
+    padding-left: 5px;
+}
+
+.tela_extrato tfoot tr td{
+    color: #000;
+    text-shadow: #c5ccd9 0.1em 0.1em 0.1em;
+    background: -webkit-linear-gradient(top, #c3cdd7, #6f7985);
+    padding: 5px;
+    padding-left: 10px;
+}
+.tela_extrato .extrato_detalhe{
+    margin: 5px;
+    font-size: 14px;
+}
+.tela_extrato .monetary{
+    text-align: right;
+}
+.tela_extrato .debit{
+    color: #ff0000;
+}
+
+.tela_extrato .acoes{
+    position: absolute;
+    background: #fff;
+    padding: 5px;
+    border-radius: 4px;
+    border: 3px solid #797e92;
+    background:#ffffbe;
+    margin-top: -10px;
+    margin-left: 20px;
+    display:none;
+    opacity: 0.9;
+}
+
+.tela_extrato .acoes a{
+    color:#0066cc;
+}
+
+.tela_extrato .Agendado td{
+    color: #0066cc;
+}

@@ -1,0 +1,44 @@
+<script type="text/javascript">
+    $(function() {
+        $( "#draggable" ).draggable();
+        $( "#droppable" ).droppable({
+            drop: function( event, ui ) {
+                $("#dragdrop_box-error").html("Aguarde...");
+                $.getJSON("{SITE_PATH}{controller_name}/deletar?id={delete_id}", function(json){
+                    var message = json.message;
+                    if(message == 'ok'){
+                        var element = $("#item_link_{delete_id}").parent();
+                        $.listagem_acoes.remove_from_list(element);
+                        $('#delete_box').remove();
+                    }else{
+                        $("#dragdrop_box").parent().remove();
+                        $("#dragdrop_box-error").html("Erro ao deletar {delete_id}:<br /> " + message + "<br /> feche esta janela tente deletar novamente.");
+                    }
+                })
+                
+            },
+            over: function(event, ui){
+                $(this)
+                .addClass("droppable_highlight" );
+            },
+            out: function(event,ui){
+                $(this)
+                .removeClass( "droppable_highlight" );
+            }
+        });
+    });
+</script>
+<div id="delete_box-dialog">
+    <p>Tem certeza que deseja deletar o registro {delete_id}?</p>
+    <div id="dragdrop_box">
+        <p>Arraste para deletar</p>
+        <div id="draggable" class="ui-widget-content">
+            &nbsp;
+        </div>
+
+        <div id="droppable" class="droppable">
+            &nbsp;
+        </div>
+    </div>
+</div>
+<p id="dragdrop_box-error">&nbsp;</p>

@@ -1,0 +1,34 @@
+<script src="{SITE_PATH}_template/pdfjs/jsacrobat_detection.js"></script>
+<div id='plugindetect'></div>
+<script type="text/javascript">
+    function create_embeeded(){
+        $('<embed />', {
+            src: '{pdf_url}',
+            width:"100%",
+            height:"100%",
+            html:"Seu navegador não suporta arquivos PDF. Faça o <a href='{pdf_url}'>download deste PDF</a>"
+        }).appendTo('#/*rand_id*/');
+    }
+    function create_iframe(){
+        $('<iframe/>',{
+            style: "margin:0px; padding: 0px; heigth:100%;",
+            width: "100%",
+            height: "100%",
+            src:"{SITE_PATH}_template/pdfjs?pdf={pdf_url}",
+            frameborder: "0",
+            text: "Habilite o iFrames em seu navegador"
+        }).appendTo('#/*rand_id*/');
+    }
+    var browser_info = perform_acrobat_detection();
+    //alert(browser_info.name + " "+browser_info.acrobat + " " + browser_info.acrobat_ver);
+    if(browser_info.acrobat){
+        //create_iframe();
+        create_embeeded();
+    }else{
+        create_iframe();
+    }
+</script>
+<div id="/*rand_id*/" style="width:100%; height: 100%;">
+
+</div>
+<!--<iframe style="margin:0px; padding: 0px; width: 100%; height: 100%;" src="{SITE_PATH}_template/pdfjs?pdf={pdf_url}" frameborder="0">Habilite o iFrames em seu navegador</iframe>-->

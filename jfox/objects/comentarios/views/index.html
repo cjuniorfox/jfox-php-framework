@@ -1,0 +1,44 @@
+<div class="clearfix" id="comentario_index_box">
+	<h1 class="heading_box">-!title!-</h1>
+    -!comments!-
+    <script language="javascript">
+    <!--
+        function new_freecap()
+            {
+                // loads new freeCap image
+                if(document.getElementById)
+                {
+                // extract image name from image source (i.e. cut off ?randomness)
+                    thesrc = document.getElementById("freecap").src;
+                    document.getElementById("freecap").src = thesrc+"?"+Math.round(Math.random()*100000);
+                } else {
+                    alert("Sorry, cannot autoreload freeCap image \\nSubmit the form and a new freeCap will be loaded");
+                }
+            }
+//-->
+    </script>
+    <hr class="comentario_hr">
+    <div class="comentario_formbox">
+        <h3 class="comentario_formbox">Escreva um Comentario</h3>
+        <div id="comentario-wrap">
+            <form id="comentario" name="comentario" method="post" action="#">
+                <label for="-!field_name!-">Nome:</label><br />
+                <input type="text" name="-!field_name!-" value="-!name!-" maxlength="50" id="mod_comentario_name" class="inputbox"/>-!error_name!-
+
+                <label for="-!field_email!-">Email:</label><br />
+                <input type="text" name="-!field_email!-" value="-!email!-" maxlength="40" id="mod_comentario_email" class="inputbox" />-!error_email!-
+                <label for="-!field_comentario!-">Comentario:</label><br />
+                <textarea name="-!field_comment!-" id="mod_comentario_comment" class="inputbox">-!comment!-</textarea>-!error_comment!-<br /> -!error_comment_repeated!- <br />
+                <table>
+                    <tr><td>Se voc&ecirc; n&atilde;o consegue ler as letras abaixo, <a href="#" onClick="this.blur();new_freecap();return false;">Clique aqui.</a></td></tr>
+                    <tr><td><img src="resources/freecap/freecap.php" id="freecap"></td></tr>
+                </table>
+                <label for="-!field_freecap!-">digite as letras da imagem em minusculo:</label>
+                <input type="text" name="-!field_freecap!-" value="" id="mod_comentario_freecap" class="inputbox" >-!error_freecap!-
+
+                <label for="-!field_submit!-"></label>
+                <input name="-!field_submit!-" type="submit" class="button" value="Enviar Comentario" />
+            </form>
+        </div>
+    </div>
+</div>

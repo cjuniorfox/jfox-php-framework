@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    $("body").flexyPagination = null;
+    $(function(){
+        $("body").flexiPagination({
+            url: "{SITE_PATH}{source_page}{link}",
+            currentPage: {page},
+            totalResults: {total_results},
+            perPage: {res_per_page},
+            container: {target},
+            pagerVar : "pag",
+            loaderImgPath: "{SITE_PUBLIC_PATH}resources/jquery.jqpageflow/images/loading11.gif",
+        });
+    });
+</script>

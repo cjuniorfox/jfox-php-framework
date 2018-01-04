@@ -1,0 +1,453 @@
+/* 
+    Document   : index
+    Created on : Aug 30, 2012, 11:55:37 AM
+    Author     : cjuniorfox
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/*Browser Body and default styles*/
+body,td,th {
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    color: rgb(70, 83, 107);
+    font-size: 0.8em;
+}
+
+html, body{
+    height:100%;
+}
+a:link, a:visited, a:hover{
+    text-decoration: none;
+    color: #ccc;
+}
+body {
+    width:100%;
+    position: fixed;
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/wallpaper.png) #7da600 no-repeat center;
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    overflow-x: hidden;
+    border:none;
+    min-width: 970px;
+}
+/*end*/
+
+/*Menu, Body, footer*/
+#main_menu{
+    color: rgb(255,255,255);
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/menu/bg.png);
+    width:100%;
+    height:60px;
+    margin-bottom: -10px;
+    display: none;
+    position: relative;
+    min-width: 970px;
+}
+#main_body{
+    min-width: 970px;
+    top: 50px;
+    bottom: 26px;
+    padding:0px;
+    margin: 0px;
+    width:100%;
+    position:fixed;
+
+    text-align: left;
+    overflow: auto;
+}
+#footer{
+    color: rgb(255,255,255);
+    min-width: 970px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+    font-size:1.2em;
+    background-color:#465669;
+    padding-left:15px;
+    padding-top:3px; 
+    height:26px;
+    position: fixed;
+    overflow:hidden;
+    clear:both;
+}
+
+.string_contents{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    font-size:2em;
+    padding:2px;
+    margin:3px;
+}
+
+.loading_fullscreen{
+    width: 100%;
+    min-height: 400px;
+    height: 100%;
+    background: #fff url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/loading_full.gif) center no-repeat;
+}
+/*end*/
+
+/*css_form*/
+
+/*Tela de login*/
+#login_window{
+    position:relative;
+    display:none;
+    /*Propriedade estetica, apenas para o formulario nascer pelo fadeIn do Jquery*/
+    /*background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/login/bg.png);*/
+    overflow:visible;
+    width:473px;
+    height:370px;
+    margin: 100px auto;
+}
+#login_window-body{
+    /* fallback */
+    background: #e4f2f8;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#e4f2f8));
+    background: -webkit-linear-gradient(top, #fff, #e4f2f8);
+    background: -moz-linear-gradient(top, #fff, #e4f2f8);
+    background: -ms-linear-gradient(top, #fff, #e4f2f8);
+    background: -o-linear-gradient(top, #fff, #e4f2f8);
+    border: 1px solid #000;
+    color:#064bb1;
+    position: absolute;
+    top:25px;
+    left:25px;
+    right:31px;
+    bottom:31px;
+    box-shadow: 0px 5px 15px #000;
+    -moz-box-shadow: 0px 5px 15px #000;
+    -webkit-box-shadow: 0px 5px 15px #000;
+    -ms-box-shadow: 0px 5px 15px #000;
+    -o-box-shadow: 0px 5px 15px #000;
+}
+#login_window-bar{
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/login/bar_window.png);
+    background-position:center;
+    margin:0 auto;
+    background-repeat:no-repeat;
+    height:115px;
+    overflow:hidden;
+}
+#login_window form{
+    margin: 10px 10px 10px 70px;
+    font-size:1.2em;
+    text-align:right;
+}
+.login_window-input{
+    width:250px;
+}
+.login_window-button{
+
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/login/button.png);	  
+}
+.login_window-button:hover{
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/login/button-hover.png);
+}
+#login_window-line{
+    margin:0px auto;
+    margin-bottom: 2px;
+    padding:0px;
+    height: 1px;
+    width: 330px;
+    background-color:#064bb1;
+}
+#login_window a{
+    width:100%;
+    margin:3px;
+    padding:2px;
+
+    text-align:left;
+    display:block;
+    color: #064BB1;
+    font-weight: 400;
+    text-decoration: none;
+}
+#login_window a:hover{
+    text-decoration:underline;
+}
+#login_window-message{
+    font-size:0.8em;
+    color:#F00;
+    margin:3px;
+    padding:0px;
+    height:16px;
+    overflow:hidden;
+}
+#login_window input[type="text"], #login_window input[type="password"]{
+    font-size: 1.3em;
+
+}
+
+/*End*/
+
+/*Main Menu*/
+#main_menu-logo_empresa{
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/menu/logo_empresa.png);
+    width:254px;
+    height:41px;
+    margin: 3px;
+    display:block;
+    float:left;
+}
+#main_menu-info_login{
+    float:right;
+    font-size:1.2em;
+    margin:2px;
+    display:block;
+}
+
+/*Menu novo*/
+
+#main_menu .menu{
+    display: block;
+    position: absolute;
+    bottom:10px;
+    right: 0px;
+    overflow: visible;
+    -moz-border-radius: 12px 0px 0px; 0px;
+    -webkit-border-radius: 12px 0px 0px; 0px;
+    -ms-border-radius: 12px 0px 0px; 0px;
+    border-radius: 12px 0px 0px; 0px;
+    padding-left:12px;
+}
+
+#main_menu .menu, #main_menu .menu ul{
+    background: #37A5BC;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#57C5DC), to(#37A5BC));
+    background: -webkit-linear-gradient(top, #57C5DC, #37A5BC);
+    background: -moz-linear-gradient(top, #57C5DC, #37A5BC);
+    background: -ms-linear-gradient(top, #57C5DC, #37A5BC);
+    background: -o-linear-gradient(top, #57C5DC, #37A5BC);
+}
+
+#main_menu ul , #main_menu ul a{
+    color:#000;
+}
+
+#main_menu ul{
+    margin:0px;
+    padding:0px;
+}
+
+#main_menu ul li a{
+    padding:5px 10px;
+    display: block;
+}
+#main_menu ul li:hover, #main_menu ul li a:hover{
+    background:#838280;
+    color:#CCC;
+}
+/*End*/
+
+
+
+/*Listagem e relatório de resultados*/
+
+#listagem-corpo{
+    background: #1f1f1f url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/pattern.png);
+    position: absolute;
+    top:0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px;
+    color: #000;
+    min-width: 970px;
+}
+
+#listagem-left, #listagem-body{
+    position: absolute;
+    height: 100%;
+    overflow: auto;
+}
+
+#listagem-left{
+    background:#fffaff;
+    left: 0px;
+    height: 100%;
+    width:250px;
+    border-right: 2px solid #465669;
+    padding: 0 2px;
+}
+#listagem-left #loading_big{
+    margin: 20px auto;
+    display: block;
+
+}
+#listagem-body{
+    left: 256px;
+    right: 0px;
+    height: 100%;
+}
+
+
+.mini_info{
+    margin-left: 10px;
+    color: #888;
+    font-size: 0.7em;
+}
+
+#lista .content{
+    font-size: 0.8em;
+}
+
+#lista .lista_acoes{
+    border-radius: 1.5em;
+    border: 1px solid rgb(226, 222, 222);
+    background: rgb(247, 247, 247);
+    padding: 0.7em;
+    text-align: center;
+    font-size: 0.6em;
+}
+
+#lista .lista_acoes-descricao{
+    margin-bottom: -0.3em;
+    height: 1.1em;
+    color: rgb(101, 105, 109);
+}
+
+#lista .field_name{
+    min-width: 60px;
+    display: inline-block;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 3px;
+}
+
+
+#lista div a{
+    color: #0074c7;
+    text-decoration: underline;
+}
+#relatorio_pesq{
+    padding: 5px;
+}
+#relatorio_pesq input{
+    display:inline;
+    margin: 3px;
+    padding: 0px;
+    border:#0074c7 1px solid;
+}
+#relatorio_pesq input[type='text']{
+    /*Campo de pesquisa de relatorio*/
+    height: 20px;
+    width:155px;
+}
+#relatorio_pesq input[type='submit']{
+    width:60px;
+    height: 22px;
+    margin-top:5px;
+    background: #eee;
+}
+#relatorio_pesq input[type='submit']:hover{
+    background:#ccc;
+}
+#relatorio .pesq_carregando{
+
+    margin-top: 10px;
+    width: 23px;
+    height: 23px;
+}
+/*End*/
+
+/*Intra Window (Janelas da aplicação)*/
+.intra_window{
+    border:#000 1px solid;
+    background:#e6ebf0;
+    color:#064bb1;
+}
+.intra_window h1{
+    border:#000 1px solid;
+    background-color:#465669;
+    color:#FFF;
+    font-size: 1.2em;
+    margin:2px;
+    padding:3px;
+    text-align:center;
+}
+.intra_window blockquote{
+    margin:5px;
+}
+/*End*/
+
+/*Paginação de resultados*/
+.paginacao{
+    text-align: left;
+}
+.paginacao a:link{
+    color:#064bb1;
+}
+/*End*/
+
+
+/*CSS de Widgets. Atualmente sem uso*/
+
+.wid_window{
+    float: left;
+    width: 350px;
+    background: #FFF;
+    background: rgba(255,255,255,0.95);
+    border: 1px solid #000;
+    margin: 15px;
+    padding: 0px;
+    color: #000;
+    font-weight: bold;
+    position: relative;
+    box-shadow: 0px 2px 10px #555;
+    -moz-box-shadow: 0px 2px 10px #555;
+    -webkit-box-shadow: 0px 2px 10px #555;
+}
+.wid_window h1, .wid_window h1 a:link,.wid_window h1 a:visited{
+    background: #eef3c2;
+    color:#448e64;
+    font-weight:normal;
+    font-size: 1.2em;
+    font-family: Arial, Helvetica, sans-serif;
+    font: 0.9em #448e64;
+    margin: 0px;
+    padding: 2px 10px
+}
+.wid_window td{
+    color:#000;
+    font-weight:bold;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 4px 6px;
+}
+.wid_window hr{
+    color: #000;
+    width: 80%;
+    margin: 14px auto;
+}
+
+.wid_window a{
+    text-decoration: none;
+    color: #333;
+}
+
+.wid_window .widBody{
+    margin:0px;
+    min-height: 300px;
+    position: relative;
+}
+.wid_window  .widFooter{
+    width:100% - padding;
+    height: 10px;
+    padding: 5px;
+    margin-top: 0 - height; /* A mesma altura do rodapé, o valor deve ser negativo */
+    position: relative;
+    overflow:hidden;
+    text-align: right;
+}
+
+.wid_window h4{
+    margin: 0px auto;
+    padding: 0px;
+    text-align: center;
+    color: #FFF;
+    height: 13px;
+    min-width: 64px;
+    background: center no-repeat url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/wid_window/h4-64.png);
+}
+/*End*/

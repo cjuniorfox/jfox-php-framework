@@ -1,0 +1,131 @@
+-!menu!-
+<h1>jdMenu 1.3.beta2</h1>
+	A normal positioned menu
+	<ul class="jd_menu jd_menu_slate">
+		<li id="dynamicMenu">Dynamic Menu
+			<ul><li>Loading...</li></ul>
+		</li>
+
+		<li><a href="http://jquery.com" class="accessible">jQuery</a>
+			<ul>
+				<li><a href="http://jquery.com" target="_blank">jQuery.com</a></li>
+				<li><a href="http://docs.jquery.com">jQuery Docs</a></li>
+				<li><a href="http://jquery.com/plugins/">jQuery Plugins</a></li>
+				<li><a href="http://www.visualjquery.com">Visual Jquery</a></li>
+			</ul>
+		</li>
+		<li><a href="http://jdsharp.us" class="accessible">jd Sharp</a>
+			<ul style="width: 400px;">
+				<li>AutoScroll Plugin for jQuery</li>
+				<li><a href="#">jdMenu Plugin for jQuery</a></li>
+				<li><div style="width: 200px;">Sub sub</div>
+					<ul>
+						<li>Item 1</li>
+						<li>Item 2</li>
+						<li>Item 3
+							<ul style="width: 600px;">
+								<li>Item One</li>
+								<li>Item Two</li>
+								<li>Item Three</li>
+							</ul>
+							</li>
+					</ul>
+				</li>
+				<li id="s4">Another List Item</li>
+			</ul>
+		</li>
+	</ul>
+	<div id="content">
+		<select style="width: 80%;"><option>A really long select box to test IE's "Feature"</option></select>
+		<p>
+		Lorem ipsum dolor sit amet, con sectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
+		volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation. ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
+		Duis autem vel eum iriure dolor in foo.
+		</p>
+
+		<p>
+		An absolutely positioned menu
+		</p>
+			<ul class="jd_menu jd_menu_slate" style="position: absolute; left: 100px; top: 250px; width: 400px;">
+				<li>Item One &raquo;
+					<ul>
+						<li>Item One &raquo;
+						<ul>
+							<li>Item One &raquo;
+							<ul>
+								<li>Item One</li>
+								<li>Item Two</li>
+								<li>Item Three</li>
+								<li>Item Four</li>
+								<li>Item Five</li>
+							</ul>
+							</li>
+							<li>Item Two</li>
+							<li>Item Three</li>
+							<li>Item Four</li>
+							<li>Item Five</li>
+						</ul>
+						</li>
+						<li>Item Two</li>
+						<li>Item Three</li>
+						<li>Item Four</li>
+						<li>Item Five</li>
+					</ul>
+				</li>
+				<li>Item Two &raquo;
+					<ul>
+						<li>Item One</li>
+						<li>Item Two</li>
+						<li>Item Three</li>
+						<li>Item Four</li>
+						<li>Item Five</li>
+					</ul>
+				</li>
+				<li>Item Three &raquo;
+					<ul>
+						<li>Item One</li>
+						<li>Item Two</li>
+						<li>Item Three</li>
+						<li>Item Four</li>
+						<li>Item Five</li>
+					</ul>
+				</li>
+			</ul>
+
+		<div style="height: 200px;">&nbsp;</div>
+		<p>A vertical menu</p>
+		<ul class="jd_menu_vertical jd_menu_slate">
+			<li id="dynamicMenu">Dynamic Menu
+				<ul></ul>
+			</li>
+
+			<li>jQuery
+				<ul>
+					<li><a href="http://jquery.com" target="_blank">jQuery.com</a></li>
+					<li><a href="http://docs.jquery.com">jQuery Docs</a></li>
+					<li><a href="http://jquery.com/plugins/">jQuery Plugins</a></li>
+					<li><a href="http://www.visualjquery.com">Visual Jquery</a></li>
+				</ul>
+			</li>
+			<li>jd Sharp
+				<ul style="width: 400px;">
+					<li>AutoScroll Plugin for jQuery</li>
+					<li>jdMenu Plugin for jQuery</li>
+					<li>Sub sub
+						<ul>
+							<li>Item 1</li>
+							<li>Item 2</li>
+							<li>Item 3</li>
+							<li>Item 4</li>
+							<li>Item 5</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+
+		<div style="width: 2000px; height: 800px; background-color: #EFEFEF; border: 1px solid #404040;">
+			This div to provide content so you can scroll and test menu positioning
+		</div>
+	</div>
+

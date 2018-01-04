@@ -1,0 +1,17 @@
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#{uploader_id}").uploadify({
+            <!--begin config--><!--glue ,
+            -->'{key}': {value}<!--end-->
+        });
+        if($("#{field_id}").val()){
+            image_loader('#uploadify_{field_id} .image_content', '{SITE_PATH}' + $("#{field_id}").val());
+        }
+    });
+</script>
+<div class="uploadify_content" id="uploadify_{field_id}">
+    <div class="image_content"></div>
+    <input type="hidden" id="{field_id}" name="{field_name}" value="{fieldValue}" />
+    <input id="{uploader_id}"  type="file" /> 
+</div>

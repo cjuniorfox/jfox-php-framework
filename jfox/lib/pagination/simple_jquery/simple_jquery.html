@@ -1,0 +1,19 @@
+<script type="text/javascript">
+    $(function(){
+        var target = /*target*/;
+        $("#pagination-simple_jquery-/*links_name*/").find('.pagination-simple_jquery-link').click(function(e){
+            e.preventDefault();
+            if(typeof $.messageBox === 'function')
+                $.messageBox("pagination-simple_jquery_message-/*links_name*/","Aguarde...");
+            target.load($(this).attr('href'),function(){
+                if(typeof $.messageBox === 'function'){
+                    $.messageBox.close("pagination-simple_jquery_message-/*links_name*/");
+                }
+                    
+            });
+        });
+    })
+</script>
+<div id="pagination-simple_jquery-/*links_name*/">
+    <!--{actual}-->{prev}&nbsp; {first} {prevs}  {page} {nexts} {last} &nbsp;{next}
+</div>

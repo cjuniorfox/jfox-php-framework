@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="{SITE_PATH}_template/appTema/cssprint.css" rel="stylesheet" type="text/css" />
+        <script>
+            function imprimir(){
+                window.print();
+                window.close();
+            }
+        </script>
+    </head>
+    <body onload="imprimir()">
+        <div id="content">
+            <h1>{header1}</h1>
+            <h2>{header2}</h2>
+            <div id="print_form_data">
+                <ul>
+                    <!--begin list-->
+                    <li class="{type}"><div class="label">{label}</div> <div class="value" style="min-width:{size}ex">&nbsp;{value}</div></li>
+                    <!--end-->
+                </ul>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </body>
+</html>

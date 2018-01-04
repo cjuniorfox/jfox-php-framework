@@ -1,0 +1,103 @@
+
+<style type="text/css">
+    #lista_busca_avancada{
+        border-collapse:collapse;
+        margin: 0 auto;
+        border-radius: 7px;
+        overflow: hidden;
+        font-size: 9pt;
+        background: #fff;
+    }    
+
+    #lista_busca_avancada thead tr th{
+        background: -webkit-linear-gradient(top, #c3cdd7, #6f7985);
+        text-shadow: #c5ccd9 0.1em 0.1em 0.1em;
+        text-align:center;
+        border: none;
+        padding:6px;
+    }
+    
+    #lista_busca_avancada thead tr th a{
+        color: #000;
+    }
+    
+    #lista_busca_avancada tfoot tr td{
+    color: #000;
+    text-shadow: #c5ccd9 0.1em 0.1em 0.1em;
+    background: -webkit-linear-gradient(top, #c3cdd7, #6f7985);
+    padding: 5px;
+    padding-left: 10px;
+}
+
+    #lista_busca_avancada tr td, .tela_extrato tr th{
+        border-right:solid 1px #797e92;
+        color: #27313d;
+        padding:1px;
+        padding-left: 5px;
+        cursor: pointer;
+    }
+    
+    .list_header{
+        padding-left: 1em;
+    }
+    .select_/*campo_ordenar*/{
+        
+        background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/bullet_arrow_down.png) center left no-repeat;
+;    }
+</style>
+
+<script type="text/javascript">
+    function zebra(){
+        //troca fundo de linhas pares
+        $('#lista_busca_avancada tbody tr:odd').css('background','#dfe6ef').css('color','#2c3846');
+        //troca fundo de linhas ímpares
+        $('#lista_busca_avancada tbody tr:even').css('background','#f9fafe').css('color','#8a8d96');
+    }
+    $(function(){
+        zebra()
+        $('#lista_busca_avancada tbody tr').mouseover(function(){
+            $(this).css('background','#f79130');
+        })
+        .click(function(){
+            var pk = $(this).find(".primary_key").html();
+            $.modalbox('update_reg','{SITE_PATH}{controller_name}/update?id='+pk,".update_box");
+        })
+        .mouseleave(function(){
+            zebra();
+            $(this).find(".acoes").fadeOut(100);
+        })
+    });
+    
+    $("#lista_busca_avancada thead tr th a").click(function(e){
+        e.preventDefault();
+        $("#carregando").messageBox("Aguarde...");
+        $("#resultados_busca_avancada").parent().load($(this).attr('href'),function(){$("#carregando").messageBox.close()});
+    })
+</script>
+<div id="resultados_busca_avancada">
+    <div class="paginacao">{paginacao}</div>
+    <table id="lista_busca_avancada">
+        <thead>
+            <tr>
+                <!--begin list_header-->
+                <th  scope="col"><div class="list_header select_{key}"><a href="{SITE_PATH}{controller_name}/{action_name}?{HTTP_GET_QUERY}&__col={key}">{label}</a></div></th>
+                <!--end-->
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="{foot_colspan}">Total de resultados: {total_resultados}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <!--begin list-->
+            <tr>
+                <!--begin item_list-->
+                <td><span class="{type}">{value}</span>&nbsp;</td>
+                <!--end-->
+            </tr>
+            <!--end-->
+        </tbody>
+    </table>
+    <div class="paginacao">{paginacao}</div>
+</div>

@@ -1,0 +1,73 @@
+<style type="text/css">
+    .filtrosExtrato input[type='text'], .filtrosExtrato textarea, .filtrosExtrato select{
+        font-size: 14px;
+    }
+
+    .filtrosExtrato .field{
+        display: inline-block;
+    }
+    .filtrosExtrato label{
+        font-size: 10px;
+        color: #0066cc;
+        display: block;
+        clear: both;
+    }
+</style>
+<script type ="text/javascript">
+    var form = $("form[name='{formName}'] ");
+    var fields = form.find("input, select").not(".input_autoComplete");
+    
+    function listar_resultados(){
+        var test_url = "{SITE_PATH}{controller_name}/resultados_busca_avancada?" + $(form).serialize();
+        if(test_url != $.load_url){
+            $.load_url = test_url;
+            $('#listagem-body').html('<div class="loading_fullscreen">Carregando...</div>');
+            $('#listagem-body').load($.load_url);
+        }
+        
+    }
+    form.bind('remove',function(){
+        $.load_url = "";
+    });
+    form.submit(function(event){
+        event.preventDefault();
+        listar_resultados();
+    });
+    fields.bind({
+    change:function(){
+        listar_resultados();
+    },
+    blur:function(){
+        listar_resultados();
+    },
+    focus:function(){
+        listar_resultados();
+            
+    }
+});
+    $("input[type='reset']").click(function(){
+        $('#listagem-left').load('{SELF_URL}');
+    })
+</script>
+
+<!--begin form-->
+{headers}
+<script>
+    $(function(){
+        listar_resultados();
+        <!--begin js-->{js_code}
+        <!--end-->
+    })
+</script>
+
+<div class="filtrosExtrato">
+    <h3>{title}</h3>
+    <div>{message}</div>
+    <form {form_properties}>
+        <!--begin form_data--><!--glue-->
+        <div class="field">{label}{field}</div>
+        <!--end-->
+        <div class="erro"></div>
+    </form>
+</div>
+<!--end-->

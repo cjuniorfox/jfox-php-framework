@@ -1,0 +1,31 @@
+<link rel="stylesheet" type="text/css" href="{SITE_PUBLIC_PATH}resources/objects/jqueryslideshow/css/style.css" />
+<!--begin jquery--><script type="text/javascript" src="{SITE_PUBLIC_PATH}resources/objects/jqueryslideshow/js/jquery-1.3.2.min.js" ></script><!--end-->
+<!--begin jquery-ui--><script type="text/javascript" src="{SITE_PUBLIC_PATH}resources/objects/jqueryslideshow/js/jqueryui-1.5.3-min.js" ></script><!--end-->
+
+<script>
+    $(document).ready(function(){
+        var slideShow = $("#featured");
+        
+        slideShow.remove_classes = ".ui-tabs, .ui-widget, .ui-widget-content, .ui-corner-all, .ui-tabs-nav, .ui-helper-reset, .ui-helper-clearfix, .ui-widget-header, .ui-corner-all .ui-state-default, .ui-corner-top, .ui-tabs-selected, .ui-state-active, .ui-state-default, .ui-corner-top, ui-tabs-panel, .ui-widget-content, .ui-corner-bottom";
+        slideShow.tabs({show:{opacity: "toggle"}});
+        setTimeout(function(){
+            $("#overlay").fadeOut();
+            //Rotation (removed on jqueryui 1.9).
+            var n = slideShow.find("li.ui-tabs-nav-item").length;
+            var i=0; // current tab
+            setInterval(function() {
+                i = (++i < n ? i : 0);
+                slideShow.tabs( "option", "active", i);
+            }, 10000 ); //Inverval in seconds to effect
+        },2000);
+    });
+
+
+</script>
+
+<style>
+    #featured{
+        width:/*width*/;
+        height:/*height*/;
+    }
+</style>

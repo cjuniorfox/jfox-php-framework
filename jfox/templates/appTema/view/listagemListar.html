@@ -1,0 +1,26 @@
+<script src="{SITE_PATH}_template/appTema/jslistagem_acoes.js?focus_item={focus_item}" type="text/javascript"> </script>
+<div id="relatorio">
+    <form id="relatorio_pesq" action="{SELF_URL_PAGE}" method="GET">
+        <input type="text" value="{pesq_value}" name="term" id="searchbox"/>
+        <input type="submit" value="Buscar" id="buscar"/>
+    </form>
+    <div class="paginacao">{paginacao}</div>
+    <div id="lista">
+        <!--begin list-->
+        <h4><a href="#" id="item_link_{primary_key}">{first_item}<br /><span class="mini_info">{mini_info_label} {mini_info_value}</span></a></h4>
+        <div class="content">
+            <ul>       
+                <!--begin item_list--><li><span class="field_name">{label}</span>{value}</li><!--end-->
+            </ul>
+            <div class="lista_acoes">
+                <a href="javascript:$.listagem_acoes.delete_box('{controller_name}','{primary_key}');"><img src="{SITE_PUBLIC_PATH}resources/templates/appTema/images/reg_actions/delete.png" alt="Excluir" title="Remove este registro do banco de dados." /></a>&nbsp;
+                <a href="{SITE_PATH}#{controller_name}/cadastro?id={primary_key}"><img src="{SITE_PUBLIC_PATH}resources/templates/appTema/images/reg_actions/copy.png" alt="Copiar para novo registro" title="Cria um registro novo com os dados deste registro." /></a>&nbsp;
+                <!--begin link_documento--><a href="{SITE_PATH}/_template/pdfjs/iframe?pdf={SITE_PATH}{controller_name}/documento.{PARENT::primary_key}.pdf" class="listar_body"><img src="{SITE_PUBLIC_PATH}resources/templates/appTema/images/reg_actions/pdf.png" alt="Abrir como PDF" title="Gera um documento e abre o mesmo como PDF." /></a>&nbsp;<!--end--> 
+                <a href="{SITE_PATH}{controller_name}/update?id={primary_key}" class="listar_body"><img src="{SITE_PUBLIC_PATH}resources/templates/appTema/images/reg_actions/document_open.png" alt="Acessar registro" title="Acessar Registro" title="Acessa o registro para consulta ou edição." /></a>&nbsp;
+                <div class="lista_acoes-descricao"></div>
+            </div>
+        </div>
+        <!--end-->
+    </div>
+    <div class="paginacao">{paginacao}</div>
+</div>

@@ -1,0 +1,22 @@
+<script type="text/javascript" src="resources/jquery.lavalamp/jquery.lavalamp.js"></script>
+<!-- Optional -->
+<script type="text/javascript" src="resources/jquery.easing/jquery.easing.1.1.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("#menu_principal").lavaLamp({
+                fx: "backout",
+                speed: 700,
+                click: function(event, menuItem) {
+                    return false;
+                }
+            });
+        });
+    </script>
+<link href="resources/jquery.lavalamp/lavalamp.custom.jfox.css" rel="stylesheet" type="text/css" />
+<ul class="lavaLamp_custom_jfox" id="menu_principal">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Plant a tree</a></li>
+    <li><a href="#">Travel</a></li>
+    <li><a href="#">Ride an elephant</a></li>
+</ul>

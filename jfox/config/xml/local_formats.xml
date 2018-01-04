@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<local_formats>
+    <default>pt_br</default>
+    <pt_br>
+        <date>
+            <short>d/m/y</short>
+            <num>d/m/Y</num>
+            <extense>d \d\e M \d\e Y</extense>
+            <complete>D, d \d\e M \d\e Y</complete>
+            <week>D</week>
+            <day>d</day>
+            <month>M</month>
+            <monthNum></monthNum>
+            <months>
+                <Jan>Janeiro</Jan>
+                <Feb>Fevereiro</Feb>
+                <Mar>Março</Mar>
+                <Apr>Abril</Apr>
+                <May>Maio</May>
+                <Jun>Junho</Jun>
+                <Jul>Julho</Jul>
+                <Aug>Agosto</Aug>
+                <Sep>Setembro</Sep>
+                <Oct>Outubro</Oct>
+                <Nov>Novembro</Nov>
+                <Dec>Dezembro</Dec>
+            </months>
+            <weeks>
+                <Sun>Domingo</Sun>
+                <Mon>Segunda-feira</Mon>
+                <Tue>Terça-feira</Tue>
+                <Wed>Quarta-feira</Wed>
+                <Thu>Quinta-feira</Thu>
+                <Fri>Sexta-feira</Fri>
+                <Sat>Sabado</Sat>
+            </weeks>
+        </date>
+        <time>
+            <short>H:i</short>
+            <complete>H:i:s</complete>
+        </time>
+        <real>
+            <monetary>
+                <decimals>2</decimals>
+                <dec_point>,</dec_point>
+                <thousands_sep>.</thousands_sep>
+            </monetary>
+        </real>
+        <integer>
+            <thousands_sep>.</thousands_sep>
+        </integer>
+    </pt_br>
+</local_formats>

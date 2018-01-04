@@ -1,0 +1,19 @@
+<script>
+    $(document).ready(function(){
+        var listagem_left = "{URL_LEFT}";
+        var listagem_body = "{URL_BODY}";
+        if(listagem_left){
+            $('#listagem-left').load(listagem_left);
+        }
+        if(listagem_body){
+            $('#listagem-body').load(listagem_body);
+        }
+    })
+</script>
+
+<div id="listagem-corpo">
+    <div id="listagem-left">
+        <img src="{SITE_PUBLIC_PATH}/resources/templates/appTema/images/loading.gif" alt="carregando..." title="carregando" id="loading_big" />
+    </div>
+    <div id="listagem-body"></div>
+</div>

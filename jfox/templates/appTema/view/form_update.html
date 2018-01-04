@@ -1,0 +1,54 @@
+<!--begin form-->
+{headers}
+<script type="text/javascript">
+    $(function(){
+        <!--begin js-->{js_code}
+        <!--end-->
+    })
+
+    $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->]").submit(function(event){
+        event.preventDefault();
+        $.submit_button = $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->] input[type='submit']");
+        $.orig_value = $.submit_button.attr('value');
+        if($.submit_button.length){
+            $.submit_button.attr('value','Aguarde...');
+            $.submit_button.attr('disabled',true);
+        }
+            
+        $.post($(this).attr('action'),$(this).serialize(),function(json){
+            $("#{div_id} .erro").html(json.msg_erro);
+            if($.submit_button.length){
+                $.submit_button.attr('value',$.orig_value);
+                $.submit_button.attr('disabled',false);
+            }
+            var id = json.id;
+            if(id){
+                $.messagebox("registro","Registro <b>" + id + "</b> salvo com exito...",2000);
+                var target = '{target_url}';
+                if(target){
+                    $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->]").parent().parent().load(target);
+                }
+                    
+            }
+        },'json');
+    });
+    $("form[name=<!--begin arrForm_properties-->'{name}'<!--end-->]").click(function(){
+        $("#{div_id} .erro").html("");
+    })
+        
+</script>
+<div class="update" id="{div_id}">
+    <div class="update_box">
+        <h3>{title}</h3>
+        <div>{message}</div>
+        {above_form}
+        <form {form_properties}>
+            <!--begin form_data--><!--glue-->
+            <div class="field" id="field_{name}">{label}{field}</div>
+            <!--end-->
+            <div class="erro"></div>
+        </form>
+    </div>
+    {below_form}
+</div>
+<!--end-->

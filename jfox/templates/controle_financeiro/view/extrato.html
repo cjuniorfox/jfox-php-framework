@@ -1,0 +1,69 @@
+<style type="text/css">
+    /*css*/
+    #extrato-content{
+        display: /*cssdisplay*/;
+    }
+</style>
+<script type="text/javascript">
+    function zebra(){
+        //troca fundo de linhas pares
+        $('table.tela_extrato tbody tr:odd').css('background','#dfe6ef').css('color','#2c3846');
+        //troca fundo de linhas ímpares
+        $('table.tela_extrato tbody tr:even').css('background','#f9fafe').css('color','#8a8d96');
+    }
+    $(function(){
+        zebra()
+        $("#extrato-content").slideDown();
+        $('table.tela_extrato tbody tr').mouseover(function(){
+            $(this).css('background','#f79130');
+            $.element = $(this).find(".acoes");
+            if($.element.attr('itemid')){
+                $.element.fadeIn(50);
+            }  
+        });
+        
+        $('table.tela_extrato tbody tr').mouseleave(function(){
+            zebra();
+            $(this).find(".acoes").fadeOut(100);
+        })
+    });
+</script>
+<div id="extrato-content">
+    <div class="extrato_detalhe">Demonstrativo de Extrato {data_inicio} até {data_fim}.</div>
+    <table class="tela_extrato">
+        <thead>
+            <tr>
+                <th scope="col">Conta</th>
+                <th scope="col">Data</th>
+                <th scope="col">Job</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Reg</th>
+                <th scope="col">{lbl_debits}</th>
+                <th scope="col">{lbl_credits}</th>
+                <th scope="col">{lbl_balance}</th>
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <td colspan="5">Totais em R$</td>
+                <td class="monetary">{debits}</td>
+                <td class="monetary">{credits}</td>
+                <td class="monetary">{balance}</td>
+            </tr>
+        </tfoot>
+        <tbody>
+            <!--begin statement-->
+            <tr class="{FATURADO}">
+                <td>{ID_CONTA}&nbsp;<div class="acoes" itemid="{ID}"><a href="#" onclick=" $.modalbox('modal_estorno','{controller_name}/estorno?id={ID}');">Estornar</a>, <a href="#" onclick=" $.modalbox('modal','{controller_name}/update?id={ID}');">Modificar</a></div></td>
+                <td>{date}&nbsp;</td>
+                <td>{JOB}&nbsp;</td>
+                <td>{description}&nbsp;</td>
+                <td>{ID}</td>
+                <td class="monetary"><span class="debit">{debit}&nbsp;</span></td>
+                <td class="monetary">{credit}&nbsp;</td>
+                <td class="monetary">{balance}&nbsp;</td>
+            </tr>
+            <!--end-->
+        </tbody>
+    </table>
+</div>

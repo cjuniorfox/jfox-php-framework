@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pagination>
+    <first>
+        <label><![CDATA[&lt;&lt; Primeira]]></label>
+        <doFirst>no</doFirst>
+    </first>
+    <prev>
+        <label><![CDATA[&lt; Anterior]]></label>
+        <doAllPrevs>no</doAllPrevs>
+        <doPrev>no</doPrev>
+        <hidePrevForAll>no</hidePrevForAll>
+        <linksPerPage>7</linksPerPage>
+    </prev>
+    <next>
+        <label><![CDATA[Mais &gt;]]></label>
+        <doAllNexts>no</doAllNexts>
+        <doNext>yes</doNext>
+        <hideNextForAll>no</hideNextForAll>
+        <linksPerPage>5</linksPerPage>
+    </next>
+    <last>
+        <label><![CDATA[&Uacute;ltima &gt;&gt;]]></label>
+        <doLast>no</doLast>
+    </last>
+</pagination>

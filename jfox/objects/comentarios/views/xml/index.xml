@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : message_errors.xml
+    Created on : October 28, 2009, 8:01 PM
+    Author     : junior
+    Description:
+        Define as mensagens de erro que aparecerão quando houver um comentario errado. em Portugues BR
+-->
+<index>
+    <error_messages>
+        <name>
+            <![CDATA[
+            <span class="error_string">O campo nome não pode ficar vazio.</span>
+            <style title="error_name">
+              #mod_comentario_name{
+                background:#1C0000;
+                border-color:#F00;
+              }
+            </style>
+            ]]>
+        </name>
+        <email>
+            <![CDATA[
+            <span class="error_string">O campo email não pode ficar vazio.</span>
+            <style title="error_email">
+              #mod_comentario_email{
+                background:#1C0000;
+                border-color:#F00;
+              }
+            </style>
+            ]]>
+        </email>
+        <comment>
+            <![CDATA[
+            <span class="error_string">O campo Comentario não pode ficar vazio.</span>
+            <style title="error_comment">
+              #mod_comentario_comment{
+                background:#1C0000;
+                border-color:#F00;
+              }
+            </style>
+            ]]>
+        </comment>
+        <freecap>
+            <![CDATA[
+            <span class="error_string">As letras digitadas não correspondem a imagem acima.</span>
+            <style title="error_freecap">
+              #mod_comentario_freecap{
+                background:#1C0000;
+                border-color:#F00;
+              }
+            </style>
+            ]]>
+        </freecap>
+        <comment_repeated>
+            <![CDATA[
+            <span class="error_string">Este comentario ja foi escrito recentimente.</span>
+            <style title="error_comment">
+              #mod_comentario_comment{
+                background:#1C0000;
+                border-color:#F00;
+              }
+            </style>
+            ]]>
+        </comment_repeated>
+    </error_messages>
+</index>
+

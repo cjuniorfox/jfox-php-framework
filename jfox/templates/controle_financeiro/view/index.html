@@ -1,0 +1,57 @@
+<script>
+    function exibir_extrato_mensagem(){
+        if($("#extrato").html())
+            $("#exibir_ocultar_extrato span").html("Ocultar Extrato");
+        else
+            $("#exibir_ocultar_extrato span").html("Exibir Extrato");    
+    }
+    
+    function exibir_ocultar_extrato(){
+        var url = "{SITE_PATH}{controller_name}/extrato?";
+        if(form)
+            if($(form).length){
+                url = url + $(form).serialize();
+            }
+        if($("#extrato").html()){
+            if($("#extrato-content").length){
+                $("#extrato-content").slideUp(function(){
+                    $("#extrato").html("");
+                    exibir_extrato_mensagem();
+                });
+            }else{
+                $("#extrato").html("");
+                exibir_extrato_mensagem();
+            }
+                
+        } 
+        else{
+            $("#extrato").html("Aguarde...");
+            $("#extrato").load(url,function(){
+                exibir_extrato_mensagem();
+            }); 
+        }
+            
+    }
+    
+    $(function(){
+        exibir_extrato_mensagem();
+    })
+    
+</script>
+<style type="text/css">
+    /*css*/
+</style>
+<div class="tela_saldo">
+    <div class="window_rounded-messagebox">
+        <h4>Saldo em R$</h4>
+        <!--begin saldo-->
+        <div class="saldo-item"><span class="update-label">{lbl_debits}:</span><span class="string_contents">{debits}</span></div>&nbsp;
+        <div class="saldo-item"><span class="update-label">{lbl_credits}:</span><span class="string_contents">{credits} </span></div>&nbsp;
+        <div class="saldo-item"><span class="update-label">{lbl_balance}<!-- até {PARENT::data_fim}:--></span><span class="string_contents">{balance}</span></div>
+        <!--end-->
+    </div>
+    <span class="update-label">Saldo {data_inicio} até {data_fim} aplicando os filtros desejados.</span>
+    <hr class="form_hl"/>
+    <span style="text-align:right;"><a id="exibir_ocultar_extrato" href="javascript:exibir_ocultar_extrato()"><span class="update-label">Exibir Extrato completo</span></a></span>
+    <div id="extrato">{extrato}</div>
+</div>

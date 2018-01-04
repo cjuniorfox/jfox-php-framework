@@ -1,0 +1,19 @@
+<script>
+    var form = "form[name='{formName}'] "
+    var fields = form + "input," + form + "select";
+    
+    function abrir_extratoNoForm(){
+        $("#extrato-content").slideUp();
+        var test_url = "{extrato}?" + $(form).serialize();
+        if(test_url != $.load_url){
+            $.load_url = test_url;
+            $('#extrato_ativo').load($.load_url);
+        }
+        
+    }
+    
+    /*js_extrato*/
+</script>
+<div id="extrato_ativo">
+    
+</div>

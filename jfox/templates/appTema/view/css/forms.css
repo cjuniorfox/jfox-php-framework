@@ -1,0 +1,269 @@
+/*Forms and fields*/
+input, textarea, select{
+    font-family: "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, Verdana, sans-serif;
+    border: solid 2px #9baeca;
+    font-size:1.1em;
+    padding:2px;
+    margin:3px;
+}
+
+input[type="submit"], input[type$="reset"], input[type$="button"]{
+    border:none;
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_green.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    width:114px;
+    height:38px;
+    font-size:1.1em;
+}
+
+input[type="submit"]:hover, input[type$="reset"]:hover, input[type$="button"]:hover{
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_green-hover.png);
+    cursor:pointer;
+}
+
+input[type="reset"]{
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_blue.png);
+}
+
+input[type="reset"]:hover{
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_blue-hover.png);
+}
+
+input[disabled], input[disabled]:hover{
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_grey.png);
+}
+
+.green_button{
+    border:none;
+    background-image: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_green.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    width:114px;
+    height:38px;
+    font-size:1.1em;
+    color:#333
+}
+.green_button:hover{
+    background-image: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_green-hover.png);
+    cursor:pointer;
+    color: #333;
+}
+.red_button{
+    border:none;
+    background-image: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/imagesb/button_red.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    width:114px;
+    height:38px;
+    font-size:1.1em;  
+    color: #333;
+}
+
+.red_button:hover{
+    background-image: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_red-hover.png);
+    cursor:pointer;
+    color: #333;
+}
+
+.blue_button{
+    border:none;
+    background-image: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_blue.png);
+    background-position:center;
+    background-repeat:no-repeat;
+    width:114px;
+    height:38px;
+    font-size:1.1em;  
+    color: #333;
+}
+
+.blue_button:hover{
+    background-image: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/button_blue-hover.png);
+    cursor:pointer;
+    color: #333;
+}
+/*End*/
+
+/*Telas de formulários de cadastro e update*/
+.cadastro{
+    background: #f9f6ff;
+
+    border: 1px solid #000;
+    color:#064bb1;
+    box-shadow: 0px 5px 15px #000;
+    -moz-box-shadow: 0px 5px 15px #000;
+    -webkit-box-shadow: 0px 5px 15px #000;
+    -ms-box-shadow: 0px 5px 15px #000;
+    -o-box-shadow: 0px 5px 15px #000;
+    padding: 2em;
+    border-radius: 3px;
+    margin: 30px auto;
+    max-width: 850px;
+    text-align: left;
+}
+.cadastro .field, .update .field{
+    display: inline-block;
+    margin: 3px;
+}
+
+.cadastro form{
+    margin: 15px auto;
+    display:table;
+}
+.cadastro label, .cadastro-label{
+    display: block;
+    clear: both;
+}
+
+.cadastro textarea{
+    min-height: 200px;
+    margin: 0px auto;
+}
+.cadastro .erro{
+    color:#f00;
+    font-size:0.9em;
+    clear: both;
+    float: none;
+}
+
+.update{
+    list-style-type:none;
+    text-align: left;
+}
+
+.update_box{
+    width: 850px;
+    min-height: 500px;
+    margin:2em auto;
+    padding:2em;
+    background: #fff;
+    box-shadow: 0px 5px 15px #000;
+    -moz-box-shadow: 0px 5px 15px #000;
+    -webkit-box-shadow: 0px 5px 15px #000;
+    -ms-box-shadow: 0px 5px 15px #000;
+    -o-box-shadow: 0px 5px 15px #000;
+}
+
+.update h3, .update label, update-h3, .update-label{
+    color:#0074c7;
+}
+
+
+.update label, .update-label{
+    font-size: 0.7em;
+    display: block;
+    padding: 0px;
+    margin: 0px;
+}
+
+.update input[type='text'], .update input[type='password'], .update select, .update textarea{
+    border: none;
+    background: none;
+
+    display: block;
+    margin:4px;
+    max-width:800px;
+}
+
+.update textarea{
+    min-height: 200px;
+    min-width:800px;
+}
+
+.update input:focus, .update select:focus, .update textarea:focus{
+    border: #0074c7 2px solid;
+    margin:2px;
+}
+
+.form_hl{
+    width:90%; 
+    border:1px solid #cedffd;
+}
+
+.form_vl {
+    width: 0px;
+    display: inline-block;
+    border: 1px solid #CEDFFD;
+    height: 16pt;
+    margin: 0 8pt;
+}
+
+.ui-autocomplete {
+    max-height: 260px;
+    max-width: 400px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    /* add padding to account for vertical scrollbar */
+    padding-right: 20px;
+}
+
+.searching{
+    background: url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/loading19.gif) right center no-repeat;
+}
+/*End*/
+
+/*Caixa de deletar*/
+#delete_box-dialog{
+    overflow: hidden;
+}
+#droppable {
+    border:0px;
+
+    width: 100px;
+    height: 100px;
+    right: 2px;
+    bottom: 2px;
+    position: absolute;
+    z-index: 998;
+}
+
+#dragdrop_box{
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/arrow_right.png) top center no-repeat;
+    height: 75px;
+    position: relative;
+    background-color: #dad9db;
+    border: 6px solid #dad9db;
+    border-radius: 6px;
+    padding-top: 30px;
+    text-align: center;
+    font-size: 0.8em;
+    color:#9d9c9e;
+}
+#dragdrop_box-error{
+    font-size: 0.7em;
+    color: red;
+}
+#draggable{
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/document_96.png) center no-repeat;
+    width: 96px;
+    height: 96px;
+    bottom: 2px;
+    left: 2px;
+    position: absolute;
+    z-index: 999;
+    border:0px;
+    margin: 3px;
+}
+
+.droppable{
+    background:url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/trash_empty_96.png) center no-repeat;
+}
+.droppable_highlight{
+    border-radius: 10px;
+    background: #f19c26 url(/*SITE_PUBLIC_PATH*/resources/templates/appTema/images/trash_empty_96.png) center no-repeat;
+}
+
+/*End*/
+
+/*Listagem busca avancada*/
+#resultados_busca_avancada{
+    display: block;
+    padding: 5px;
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    background-color: #fff;
+    overflow: auto;
+}
