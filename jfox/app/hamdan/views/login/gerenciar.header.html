@@ -1,0 +1,212 @@
+
+<style type="text/css">
+    #gerenciador_login{
+        margin: 20px auto;
+        width: 700px;
+        height: 600px;
+    }
+
+    #gerenciador_login hr.vertical{
+        margin:6px;
+        width: 1px;
+        height: 440px;
+        border-color:#367be1;
+        float: left;
+        display:block;
+    }
+
+    .gerenciar_login-colunas form{
+        text-align:right;
+    }
+
+    .gerenciar_login-colunas{
+        float: left;
+    }
+
+    #cadastrar{
+        display:none;
+    }
+
+</style>
+
+<script language="javascript">
+    $(document).ready(function(){
+        $("#gerenciar_login-form").submit(function(){
+            return false;
+        });
+        resetar_campos();
+    });
+    
+    $('#limpar').click(function(){
+        resetar_campos();
+    });
+    
+
+    function preencher_erros(){
+        erro = "";
+        if($.erro_nome_completo){
+            erro = $.erro_nome_completo;
+        }else if($.erro_nome_simplificado){
+            erro = $.erro_nome_simplificado;
+        }else if($.erro_login){
+            erro = $.erro_login;
+        }else if($.erro_senha){
+            erro = $.erro_senha;
+        }else if($.erro_senha2){
+            erro = $.erro_senha2;
+        }
+        if(erro){
+            $("#login_window-message").html(erro);
+            $("#cadastrar").fadeOut(200);
+        }else{
+            $("#login_window-message").html("");
+            $("#cadastrar").fadeIn(200);          
+        }
+    }
+    
+    function definir_css(objeto,erro){
+        if(erro){
+            $(objeto).css("color", "#FF0000");
+            $(objeto).css("border","solid 2px #ff0000");
+        }else{
+            $(objeto).css("color", "#000");
+            $(objeto).css("border","solid 2px #9baeca"); 
+        }
+    }
+
+    function resetar_campos(){
+        $('.login_window-input').val("");
+        definir_css(".login_window-input",false)
+        $('#nome_completo').focus();
+        $.erro_nome_completo = true;
+        $.erro_nome_simplificado = true;
+        $.erro_login = true;
+        $.erro_senha = true;
+        $.erro_senha2= true;
+        $("#login_window-message").html("");
+        $("#cadastrar").fadeOut(200); 
+    }  
+    
+    $("#cadastrar").click(function(){
+        var nome_completo = $("#nome_completo").attr("value");
+        var nome_simplificado = $("#nome_simplificado").attr("value");
+        var login = $("#login").attr("value");
+        var senha = $("#senha").attr("value");
+        $.ajax({
+            type: "POST",
+            url: "{SITE_PATH}index.php/login/post_gerenciar_cadastrar",
+            dataType: "html",
+            data: "nome_completo=" + nome_completo + "&nome_simplificado=" + nome_simplificado + "&login=" + login + "&senha=" + senha + "&cliente_id={cliente_id}",
+            // enviado com sucesso
+            success: function(){
+                resetar_campos();
+            },
+            // quando houver erro
+            error: function(){
+                alert("Ocorreu um erro durante a requisição");
+            }
+        });
+    });
+    
+    function verificar_nome_completo(){
+        if(!$("#nome_completo").attr("value")){
+            $.erro_nome_completo = "Campo \"Nome Completo\" não pode ficar vazio.";
+            definir_css("#nome_completo",true);
+        }else{
+            $.erro_nome_completo = false;
+            definir_css("#nome_completo",false);
+        }
+        return ($.erro_nome_completo);
+    }
+    
+    function verificar_nome_simplificado(){
+        if(!$("#nome_simplificado").attr("value")){
+            $.erro_nome_simplificado = "Campo \"Nome simplificado\" não pode ficar vazio";
+            definir_css("#nome_simplificado",true);
+        }else{
+            $.erro_nome_simplificado = false;
+            definir_css("#nome_simplificado",false);
+        }
+    }   
+    
+    function verificar_login(){
+        var login = $("#login").attr("value");
+        if(login){
+            $.getJSON("{SITE_PATH}index.php/login/json_verificar_loginexiste?login=" + login,  function(json){
+                if(json.login == "true"){             
+                    definir_css("#login",true);
+                    $.erro_login = "Login já cadastrado no sistema. ";
+                    preencher_erros();
+                }else{
+                    definir_css("#login",false);
+                    $.erro_login = false;
+                }
+            });
+        }else{
+            $.erro_login = "O campo \"Login\" não pode ficar em branco";
+            definir_css("#login",true);
+        }        
+    }
+    
+    function verificar_senha(){
+        if(!$("#senha").attr("value")){
+            $.erro_senha = "Campo \"senha\" não pode ficar em branco";
+            definir_css("#senha",true);
+        }else{
+            $.erro_senha = false;
+            definir_css("#senha",false);
+        }
+    }
+    
+    function verificar_senha2(){
+        var senha = $("#senha").attr("value");
+        var senha2= $("#senha2").attr("value");
+        if(senha && senha2){
+            if(senha != senha2){
+                $.erro_senha2 = "As senhas não conferem";
+                definir_css("#senha",true);
+                definir_css("#senha2",true);
+            }else{
+                $.erro_senha2 = false;
+                definir_css("#senha",false);
+                definir_css("#senha2",false);
+            }
+        }
+    }
+
+    $('#nome_completo').keyup(function(){
+        verificar_nome_completo();
+        preencher_erros();        
+    });
+    
+    $('#nome_simplificado').keyup(function(){
+        verificar_nome_completo();
+        verificar_nome_simplificado();
+        preencher_erros();
+    });
+    
+    $('#login').keyup(function(){
+        verificar_nome_completo();
+        verificar_nome_simplificado();
+        verificar_login();
+        preencher_erros();
+    });
+    
+    $('#senha').keyup(function(){
+        verificar_nome_completo();
+        verificar_nome_simplificado();
+        verificar_login();
+        verificar_senha();
+        preencher_erros();
+    });
+    
+    $('#senha2').keyup(function(){
+        verificar_nome_completo();
+        verificar_nome_simplificado();
+        verificar_login();
+        verificar_senha();
+        verificar_senha2();
+        preencher_erros();
+    });
+
+</script>

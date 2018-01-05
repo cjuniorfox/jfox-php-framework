@@ -1,0 +1,49 @@
+#cadastro{
+    background: #e4f2f8;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#e4f2f8));
+    background: -webkit-linear-gradient(top, #fff, #e4f2f8);
+    background: -moz-linear-gradient(top, #fff, #e4f2f8);
+    background: -ms-linear-gradient(top, #fff, #e4f2f8);
+    background: -o-linear-gradient(top, #fff, #e4f2f8);
+    border: 1px solid #000;
+    color:#064bb1;
+    margin:10px auto;
+    top:25px;
+    left:25px;
+    right:31px;
+    bottom:31px;
+    box-shadow: 0px 5px 15px #000;
+    -moz-box-shadow: 0px 5px 15px #000;
+    -webkit-box-shadow: 0px 5px 15px #000;
+    -ms-box-shadow: 0px 5px 15px #000;
+    -o-box-shadow: 0px 5px 15px #000;
+    display:block;
+    padding: 10px;
+    display: table;    
+}
+
+#cadastro ul{
+    display: table;
+    padding:0px;
+}
+
+
+#cadastro li{
+    padding:0px;
+    list-style-type: none;
+    margin: 0px;
+}
+#cadastro label{
+    display: block;
+    clear: both;
+}
+#cadastro input[type="text"], #cad_clientes textarea, #cad_clientes select{
+    font-size: 16px;
+}
+
+#cadastro #erro{
+    color:#f00;
+    font-size: 12px;
+    clear: both;
+    float: none;
+}

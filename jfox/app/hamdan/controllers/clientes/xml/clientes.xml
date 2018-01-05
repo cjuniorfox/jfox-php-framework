@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : clientes.xml
+    Created on : 23 de Maio de 2012, 12:31
+    Author     : juniorfox
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <language>pt_br</language>
+    <form name="cad_clientes" id="cad_clientes" method="POST" action='{SELF_URL_ENCODED}'>
+        <table>{prefixo}_CLIENTES</table>
+        <title>Cadastro de Clientes</title>
+        <field name="IMAGEM" id="imagem">
+            <label>Imagem:</label>
+            <field_type>jquery_fileupload</field_type>
+            <post>true</post>
+            <value></value>
+            <file>
+                <folder>/uploads</folder>
+                <upload_script>{SITE_PATH}clientes/image_upload</upload_script>
+                <fileExt>*.jpg;*.jpeg;*.gif;*.png</fileExt>
+                <fileDesc>Arquivos de Imagem</fileDesc>
+            </file>
+            <image>
+                <imagesx>160</imagesx>
+                <imagesy>160</imagesy>
+                <image_size>2097152</image_size>
+            </image>
+            <link_msg>Fazer upload da imagem</link_msg>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name='CLIENTE' size="40" maxlength="64">
+            <label>Cliente:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#CLIENTE{background:#F00}</style>O campo <b>Cliente</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+            <unique>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#CLIENTE{background:#F00}</style>O <b>Cliente</b> já está cadastrado no sistema.<br>]]></message>
+            </unique>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='TELEFONE_C' maxlength="15" size="15">
+            <label>Telefone:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <mask>'phone'</mask>
+        </field>
+        <field name='TELEFONE2' maxlength="15" size="15">
+            <label>Telefone2 (opcional):</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <mask>'phone'</mask>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='ENDERECO' size="45" maxlength="100">
+            <label>Endereco:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+        </field>
+        <field name='BAIRRO' size="20" maxlength="30">
+            <label>Bairro:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+        </field>
+        <field name='CEP' size="9" maxlength="9">
+            <label>CEP:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <mask>'cep'</mask>
+        </field>
+        <field name='CIDADE' size="20" maxlength="30">
+            <label>Cidade:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+        </field>
+        <field name='ESTADO'>
+            <field_type>mysql_selectbox</field_type>
+            <post>true</post>
+            <table>estados</table>
+            <label>Estado:</label>
+            <value>RJ</value>
+            <lbl_collumns>estado</lbl_collumns>
+            <val_collumns>uf</val_collumns>
+            <order_by>
+                <column>estado</column>
+                <order>asc</order>
+            </order_by>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name="MAIS_INFO">
+            <field_type>textarea</field_type>
+            <label>Mais informações:</label>
+            <post>true</post>
+            <ckeditor>
+                <enabled>true</enabled>
+                <config>
+                    <key>filebrowserBrowseUrl</key>
+                    <value><![CDATA[{SITE_PUBLIC_PATH}resources/simogeo-filemanager/index.html]]></value>
+                </config>
+                <config>
+                    <key>height</key>
+                    <value>300</value>
+                </config>
+                <config>
+                    <key>width</key>
+                    <value>630</value>
+                </config>
+                <config>
+                    <key>toolbar</key>
+                    <value>Basic</value>
+                </config>
+            </ckeditor>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='ID' size="5" maxlength="5" readonly="readonly">
+            <label>Registro:</label>
+            <field_type>input</field_type>
+            <post>false</post>
+            <value></value>
+            <mask>'integer'</mask>
+        </field>
+        <field name="btAvancar">
+            <value>Salvar</value>
+            <field_type>button</field_type>
+            <label></label>
+        </field>
+    </form>
+</root>

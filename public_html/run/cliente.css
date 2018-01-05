@@ -1,0 +1,55 @@
+body{
+    background: url(images/bg_grafismo.gif) #261f10 center no-repeat;
+}
+#login_window-body{
+    /* fallback */
+    background-repeat: repeat-x;
+    background: #f4e3a7;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fff), to(#f4e3a7));
+    background: -webkit-linear-gradient(top, #fff, #f4e3a7);
+    background: -moz-linear-gradient(top, #fff, #f4e3a7);
+    background: -ms-linear-gradient(top, #fff, #f4e3a7);
+    background: -o-linear-gradient(top, #fff, #f4e3a7);
+    color:#064bb1;
+}
+#login_window-bar{
+    /*    background:url(images/login/bar_window.png) #000;*/
+}
+#main_menu{
+    background: url(images/menu/bg.png) repeat-x;
+}
+#main_menu-logo_empresa{
+    background: url(images/menu/logo_empresa.png) no-repeat center;
+}
+
+#main_menu .menu, #main_menu .menu ul{
+    background:#465669;
+}
+#main_menu .menu a{
+    color:#FFF;
+}
+#main_menu .menu a:hover{
+    color:#465669;
+}
+
+#main_menu ul li:hover, #main_menu ul li a:hover{
+    background-color:#8d710f;
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8d710f), to(#f1b033));
+    background: -webkit-linear-gradient(top, #8d710f, #f1b033);
+    background: -moz-linear-gradient(top, #8d710f, #f1b033);
+    background: -ms-linear-gradient(top, #8d710f, #f1b033);
+    background: -o-linear-gradient(top, #8d710f, #f1b033);
+    background: linear-gradient(top, #8d710f, #f1b033);
+}
+#main_menu-menu{
+    background-color:#555;
+    display: block;
+    position: absolute;
+    bottom:10px;
+    right: 10px;
+    overflow: hidden;
+}
+
+#login_window-bar{
+    background:url(images/login/bar_window.png);
+}

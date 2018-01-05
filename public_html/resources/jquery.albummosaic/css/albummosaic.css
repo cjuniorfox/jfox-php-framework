@@ -1,0 +1,167 @@
+/* 
+    Document   : albumMosaic
+    Created on : Jan 18, 2013, 3:27:46 PM
+    Author     : cjuniorfox
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#jq-albumMosaic-loading{
+    /* background: url(../images/progress.gif) center top no-repeat;
+     padding-top: 3em;
+     min-width: 5em; */
+    text-align: center;
+    position: fixed;
+    color: #fff;
+    opacity: 0.8;
+}
+
+#jq-albumMosaic-loading .-jq-albumMosaic-progress_bar{
+    border: 1px solid #999;
+    height: 10px;
+    width: 100px;
+    text-align: left;
+}
+
+#jq-albumMosaic-loading .-jq-albumMosaic-progress_bar-content{
+    padding: 0px;
+    margin: 0px;
+    border: 0;
+    height: 100%;
+    width: 0%;
+    display: block;
+    background: #aaa;
+    float: left;
+}
+
+.-jq-albumMosaic-album_body{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    top: 0;
+    bottom: 0;
+    right:0;
+    left:0;
+    position: absolute;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+.-jq-albumMosaic-album_body li{
+    margin: 0px;
+    padding: 0px;
+    overflow: visible;
+    float: left;
+    width: 0px;
+    height: 0px;
+    -webkit-transform: translate3d(0,0,0);
+    -moz-transform: translate3d(0,0,0);
+    -ms-transform: translate3d(0,0,0);
+    -o-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-crop_image{
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    position: absolute;
+
+}
+.-jq-albumMosaic-album_body .-jq-albumMosaic-crop_image .-jq-albumMosaic-link{
+    display: block;
+    background: #fff;
+}
+
+
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-description_right, .-jq-albumMosaic-album_body .-jq-albumMosaic-description_left{
+    text-align: right;
+    position: absolute;
+    width:0%;
+    height: 100%;
+    overflow: hidden;
+    -moz-box-shadow: 3px 3px 10px #888;
+    -webkit-box-shadow: 3px 3px 10px #888;
+    box-shadow: 3px 3px 10px #333;
+}
+
+.-jq-albumMosaic-album_body -jq-albumMosaic-desc_box{
+    display: none;
+
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-description_left{
+    text-align: left;
+    right: 0;
+
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-description_right > div{
+    position: absolute;
+    width: 45%;
+    top: 0px;
+    right:0px;
+    bottom: 0px;
+    padding:0px;
+    display: none;
+    padding: 0.5em;
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-description_left > div{
+    left: 0px;
+}
+
+
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-desc_title{
+    margin: 0.5em;
+    padding: 0px;
+    font-size: 1.1em;
+    font-weight: 400;
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-desc_content{
+    margin: 0.3em;
+    font-size: 0.8em;
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-thumb{
+    position: absolute;
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-text{
+    position: absolute;
+
+
+    /* WebKit (Chrome & Safari) */
+    display: -webkit-box;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    /* Firefox */
+    display: -moz-box;
+    -moz-box-pack: center;
+    -moz-box-align: center;
+
+    /* IE */
+    display: -ms-box;
+    -ms-box-pack: center;
+    -ms-box-align: center;
+
+    /* Native CSS */
+    display: box;
+    box-pack: center;
+    box-align: center;
+    font-family:"Times New Roman", Times, serif;
+}
+
+.-jq-albumMosaic-album_body .-jq-albumMosaic-text-inner{
+    margin: 0 1em;
+}

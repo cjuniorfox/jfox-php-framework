@@ -1,0 +1,32 @@
+.jqpageflow-loader {
+    position:fixed;
+    left: 0px;
+    display: none;
+    margin: 0 auto;
+    background:rgba(150,150,150,0.6);
+    border: 2px solid #aaa;
+    border-radius:5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+    z-index: 1035;
+    width:300px;
+}
+.jqpageflow-loader div{
+    background: #fff;
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #888;
+    border-radius:3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -ms-border-radius: 3px;
+}
+
+.jqpageflow-loadertext {
+    font-size: 70%; 
+    width: 80px;  
+    text-align: center; 
+}

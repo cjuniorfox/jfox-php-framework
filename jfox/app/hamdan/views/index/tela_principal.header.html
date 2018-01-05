@@ -1,0 +1,25 @@
+<script language="javascript">
+    $(document).ready(function(){
+        var wid = new Array(
+        "aplicacao/widRoteiros?date=2007-01-01"
+    );
+        $("#main_body").hide();
+        i = 0;
+        //addWid(wid,i);
+        $("#main_body").fadeIn(200); /*Remover este quando usar Widgets*/
+    });
+
+    function addWid(wid,i){
+        tp = $('#main_body').html();
+        $('#main_body').html(tp + "<div id=\"widget"+i+"\"></div>");
+        $("#widget" + i).load("{SITE_PATH}index.php/" + wid[i] + "&widId="+ i,function(){
+            i = i + 1;
+            if(i < wid.length ){
+                addWid(wid,i);
+            }else{
+                $("#main_body").fadeIn(200);
+            }
+        });
+    }
+
+</script>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : clientes.xml
+    Created on : 16 de Outubro de 2011, 18:31
+    Author     : juniorfox
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <language>pt_br</language>
+    <form name="cad_contas" id="cad_contas" method="POST" action='{SELF_URL_ENCODED}'>
+        <table>{prefixo}_CONTAS</table>
+        <title>Cadastro de Contas</title>
+       
+        <field name='NOME' size="45" maxlength="100">
+            <label>Nome da Conta:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#NOME{background:#F00}</style>O campo <b>Nome da Conta</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+            <unique>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#NOME{background:#F00}</style>O <b>Nome da Conta</b> já está cadastrado no sistema.<br>]]></message>
+            </unique>
+        </field>
+        <field name='SIGLA' size='5'>
+            <label>Sigla:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#SIGLA{background:#F00}</style>O campo <b>Sigla</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+            <unique>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#SIGLA{background:#F00}</style>O <b>Sigla</b> já está cadastrado no sistema.<br>]]></message>
+            </unique>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name='BANCO' size="20" maxlength="30">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Banco:</label>
+            <relate>
+                <table>{prefixo}_BANCOS</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_BANCO</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}contas/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>BANCO</collumns>
+                <order>asc</order>
+            </order_by>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#BANCO{background:#F00}</style>O campo <b>Banco</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='AGENCIA' size="10" maxlength="10">
+            <label>Agencia:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#AGENCIA{background:#F00}</style>O campo <b>Agência</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='CONTA' size="10" maxlength="10">
+            <label>Conta:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#AGENCIA{background:#F00}</style>O campo <b>Agência</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name="MAIS_INFO">
+            <field_type>textarea</field_type>
+            <label>Mais informações:</label>
+            <post>true</post>
+            <ckeditor>
+                <enabled>true</enabled>
+                <config>
+                    <key>filebrowserBrowseUrl</key>
+                    <value><![CDATA[{SITE_PUBLIC_PATH}resources/simogeo-filemanager/index.html]]></value>
+                </config>
+                <config>
+                    <key>height</key>
+                    <value>100</value>
+                </config>
+                <config>
+                    <key>width</key>
+                    <value>630</value>
+                </config>
+                <config>
+                    <key>toolbar</key>
+                    <value>Basic</value>
+                </config>
+            </ckeditor>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='ID' size="5" maxlength="5" readonly="readonly">
+            <label>Registro:</label>
+            <field_type>input</field_type>
+            <post>false</post>
+            <value></value>
+            <mask>'integer'</mask>
+        </field>
+        <field name="btAvancar">
+            <value>Salvar</value>
+            <field_type>button</field_type>
+            <label></label>
+        </field>
+    </form>
+</root>

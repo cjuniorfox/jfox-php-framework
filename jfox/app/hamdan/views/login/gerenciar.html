@@ -1,0 +1,32 @@
+<div class="intra_window" id="gerenciador_login">
+    <h1>Gerenciador de Logins</h1>
+    <blockquote>
+        <div class="gerenciar_login-colunas">
+            <form action="" method="post" enctype="multipart/form-data" name="gerenciar_login-form" id="gerenciar_login-form">
+                <h3>Defina login e senha</h3>
+                <label for="nome_completo">Nome Completo</label>
+                <input type="text" name="nome_completo" id="nome_completo" class="login_window-input" /><br/>
+                <label for="nome_simplificado">Nome Simplificado</label>
+                <input type="text" name="nome_simplificado" id="nome_simplificado" class="login_window-input" /><br/>
+                <label for="login">Login</label>
+                <input type="text" name="login" id="login" class="login_window-input" /><br/>
+                <label for="senha">Senha</label>
+                <input type="password" name="senha" id="senha" class="login_window-input"/><br/>
+                <label for="senha2">Repita a senha</label>
+                <input type="password" name="senha2" id="senha2" class="login_window-input"/><br/>
+                <input type="hidden" name="cliente_id" id="cliente_id" />
+                <p id="login_window-message"><!-- Login ou senha incorretos--></p>
+                <hr />
+                <input id="cadastrar" name="cadastrar" type="submit" value="Cadastrar" class="botao_verde" />
+                <input id="limpar" name="limpar" type="button" value="Limpar" class="botao_azul" />
+            </form>
+
+        </div>
+        <hr class="vertical" />
+        <div class="gerenciar_login-colunas">
+            <blockquote>
+            Nesta área ficará a lista de <br />logins cadastrados para <br /> edição dos mesmos...
+            </blockquote>
+        </div>
+    </blockquote>
+</div>

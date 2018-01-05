@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <language>pt_br</language>
+    <form name="cad_trabalhos" id="cad_trabalhos" method="POST" action="{SELF_URL_ENCODED}">
+        <table>{prefixo}_TRABALHOS</table>
+        <table_view>{prefixo}_VW_TRABALHOS</table_view>
+        <primary_key>ID</primary_key>
+        <title>Cadastro de Trabalhos</title>
+		<field name="IMAGEM" id="imagem">
+            <label>Imagem:</label>
+            <field_type>jquery_fileupload</field_type>
+            <post>true</post>
+            <value></value>
+            <file>
+                <folder>/uploads</folder>
+                <upload_script>{SITE_PATH}clientes/image_upload</upload_script>
+                <fileExt>*.jpg;*.jpeg;*.gif;*.png</fileExt>
+                <fileDesc>Arquivos de Imagem</fileDesc>
+            </file>
+            <image>
+                <imagesx>160</imagesx>
+                <imagesy>160</imagesy>
+                <image_size>2097152</image_size>
+            </image>
+            <link_msg>Fazer upload da imagem</link_msg>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <!--Bloco cadastro de clientes -->
+        <field name='CLIENTE' size="40" maxlength="65">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Cliente:</label>
+            <relate>
+                <table>{prefixo}_CLIENTES</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_CLIENTE</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}{controller_name}/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>CLIENTE</collumns>
+                <order>asc</order>
+            </order_by>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#CLIENTE{background:#F00}</style>O campo <b>Cliente</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='TELEFONE_C' size="15">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Telefone Cliente:</label>
+            <relate>
+                <table>{prefixo}_CLIENTES</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_CLIENTE</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}trabalhos/input_autoComplete.json</json_source>
+            <value></value>
+            <mask>'phone'</mask>
+            <order_by>
+                <collumns>CLIENTE</collumns>
+                <order>asc</order>
+            </order_by>
+        </field>
+        <!--fim-->
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <!--Bloco cadastro agencia-->
+        <field name='AGENCIA' size="40" maxlength="65">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Agência:</label>
+            <relate>
+                <table>{prefixo}_AGENCIAS</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_AGENCIA</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}trabalhos/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>AGENCIA</collumns>
+                <order>asc</order>
+            </order_by>
+			<not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#AGENCIA{background:#F00}</style>O campo <b>Agencia</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='TELEFONE_A' size="15">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Telefone Agência:</label>
+            <relate>
+                <table>{prefixo}_AGENCIAS</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_AGENCIA</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}trabalhos/input_autoComplete.json</json_source>
+            <value></value>
+            <mask>'phone'</mask>
+            <order_by>
+                <collumns>TLEFONE_A</collumns>
+                <order>asc</order>
+            </order_by>
+        </field>
+        <!--fim-->
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <!--Seguindo com formulário normal-->
+        <field name='JOB' size="80" maxlength="100">
+            <label>Job:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#JOB{background:#F00}</style>O campo <b>Job</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='DETALHES'>
+            <field_type>textarea</field_type>
+            <label>Detalhes:</label>
+            <ckeditor>
+                <enabled>true</enabled>
+                <config>
+                    <key>filebrowserBrowseUrl</key>
+                    <value><![CDATA[{SITE_PUBLIC_PATH}resources/simogeo-filemanager/index.html]]></value>
+                </config>
+                <config>
+                    <key>height</key>
+                    <value>100</value>
+                </config>
+                <config>
+                    <key>width</key>
+                    <value>630</value>
+                </config>
+                <config>
+                    <key>toolbar</key>
+                    <value>Basic</value>
+                </config>
+            </ckeditor>
+            <post>true</post>
+        </field>
+        
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name='PREVISAO_PAGAMENTO' size="10" >
+            <field_type>inputDatePicker</field_type>
+            <format_date>
+                <enabled>true</enabled>
+                <subtype>num</subtype>
+            </format_date>
+            <label>Previsão de Pagamento:</label>
+            <post>true</post>
+        </field>
+       
+        <field name='VALOR' >
+            <value></value>
+            <mask>'decimal'</mask>
+            <field_type>input</field_type>
+            <label>Valor do Trabalho:</label>
+            <format_real>
+                <subtype>monetary</subtype>
+                <enabled>true</enabled>
+            </format_real>
+            <post>true</post>
+        </field>
+        
+        <field name='PAGO'>
+            <field_type>selectbox</field_type>
+            <label>Quitado:</label>
+            <post>true</post>
+            <item>
+                <label>Não</label>
+                <value>N</value>
+                <selected>true</selected>
+            </item>
+            <item>
+                <label>Sim</label>
+                <value>S</value>
+            </item>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='ID' size="5" maxlength="5" readonly="readonly">
+            <label>Registro:</label>
+            <field_type>input</field_type>
+            <post>false</post>
+            <value></value>
+            <mask>'integer'</mask>
+        </field>
+        <field name="btAvancar">
+            <value>Salvar</value>
+            <field_type>button</field_type>
+            <label></label>
+        </field>
+        <field name="BtnPagRec" onClick="window.location.replace('#controle_financeiro/efetuar_operacao')" type="reset">
+            <value>Pagar ou Rec.</value>
+            <field_type>button</field_type>
+            <label>Ir para Pagar ou Receber</label>
+        </field>
+        <field name="NOME_CLIENTE">
+            <label>Cliente: </label>
+        </field>
+        <field name="NOME_AGENCIA">
+            <label>Agencia: </label>
+        </field>
+    </form>
+</root>

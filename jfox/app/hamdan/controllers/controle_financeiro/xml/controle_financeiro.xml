@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : clientes.xml
+    Created on : 24 de Maio de 2012, 13:47
+    Author     : juniorfox
+    Description:
+        Purpose of the document follows.
+-->
+
+<root>
+    <language>pt_br</language>
+    <form name="controle_financeiro" id="controle_financeiro" method="POST" action='{SELF_URL_ENCODED}'>
+        <table>{prefixo}_CAIXA</table>
+        <table_view>{prefixo}_VW_CAIXA</table_view>
+        <title>Controle Financeiro</title>
+        <options>
+            <!--No campo abaixo, se tal registro for encontrado, disabilita o update do mesmo-->
+            <disable>
+                <update>
+                    <field name="FATURADO">
+                        <post>true</post>
+                        <value>Y</value>
+                        <message><![CDATA[Não é possível editar lançamentos já faturados (pagos ou recebidos)...]]></message>
+                    </field>
+                </update>
+            </disable>
+        </options>
+        <field name='JOB' size="40" maxlength="65"><!--Job Realizado-->
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Job:</label>
+            <relate>
+                <table>{prefixo}_TRABALHOS</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_TRABALHO</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}controle_financeiro/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>JOB</collumns>
+                <order>asc</order>
+            </order_by>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#JOB{background:#F00}</style>O campo <b>Job</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='DESCRICAO' size="40" maxlength="40">
+            <label>Descrição:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#DESCRICAO{background:#F00}</style>O campo <b>Descrição</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+            <financial>
+                <!--Chave de controle financeiro -->
+                <keyfield>description</keyfield>
+            </financial>
+        </field>
+        <field name='FORNECEDOR' size="20" maxlength="30">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <label>Fornecedor:</label>
+            <relate>
+                <table>{prefixo}_FORNECEDORES</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_FORNECEDOR</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}controle_financeiro/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>FORNECEDOR</collumns>
+                <order>asc</order>
+            </order_by>
+        </field>
+
+        <field name='FATURADO'>
+            <field_type>selectbox</field_type>
+            <label>Ag./ pag.</label>
+            <post>true</post>
+            <financial>
+                <!--Chave de controle financeiro -->
+                <keyfield>paid</keyfield>
+            </financial>
+            <item>
+                <label>Pago</label>
+                <value>Y</value>
+                <selected>true</selected>
+            </item>
+            <item>
+                <label>Agendado</label>
+                <value>N</value>
+            </item>
+        </field>
+        <field name='DATA' size="10" >
+            <field_type>inputDatePicker</field_type>
+            <format_date>
+                <enabled>true</enabled>
+                <subtype>num</subtype>
+            </format_date>
+            <label>Data:</label>
+            <value>$_DATE_TODAY</value>
+            <post>true</post>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#DATA{background:#F00}</style>É necessário definir uma <b>Data</b>.<br>]]></message>
+            </not_null>
+            <financial>
+                <!--Chave de controle financeiro -->
+                <keyfield>date</keyfield>
+            </financial>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='ID_CONTA'>
+            <field_type>mysql_selectbox</field_type>
+            <post>true</post>
+            <table>{prefixo}_CONTAS</table>
+            <label>Conta:</label>
+            <lbl_collumns>SIGLA</lbl_collumns>
+            <val_collumns>ID</val_collumns>
+            <value>$_LAST</value>
+            <order_by>
+                <column>ID</column>
+                <order>asc</order>
+            </order_by>
+        </field>
+        <field name='OPERACAO'>
+            <field_type>selectbox</field_type>
+            <label>Receber / Pagar:</label>
+            <post>true</post>
+            <item>
+                <label>Receber</label>
+                <value>+</value>
+                <selected>true</selected>
+            </item>
+            <item>
+                <label>Pagar</label>
+                <value>-</value>
+            </item>
+        </field>
+        <field name='VALOR' size='10'>
+            <value></value>
+            <field_type>input</field_type>
+            <label>Valor:</label>
+            <format_real>
+                <subtype>monetary</subtype>
+                <enabled>true</enabled>
+            </format_real>
+            <post>true</post>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name="btAvancar">
+            <value>Salvar</value>
+            <field_type>button</field_type>
+            <label></label>
+        </field>
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        <field name='ESTORNO' size='10' type='hidden'>
+            <value></value>
+            <mask>'integer'</mask>
+            <field_type>input</field_type>
+            <format_integer>
+                <enabled>true</enabled>
+            </format_integer>
+            <post>true</post>
+            <financial>
+                <!--Chave de controle financeiro -->
+                <keyfield>return</keyfield>
+            </financial>
+        </field>
+        <!--Abaixo campos apenas para uso do objeto controle financeiro-->
+        
+        <field name='credit'>
+            <post>false</post>
+        </field>
+        <field name='debit'>
+            <post>false</post>
+        </field>
+        <field name='operation'>
+            <post>false</post>
+        </field>
+    </form>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <!--Formulario para filtros de extrato-->
+    <form name="cf_filtros_extrato">
+        <table>{prefixo}_CAIXA</table>
+        <table_view>{prefixo}_VW_CAIXA</table_view>
+        <title>Controle Financeiro</title>
+                <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><div><p>Período</p>]]></code>
+        </field>
+        <field name='data_inicio' size="10" >
+            <field_type>inputDatePicker</field_type>
+            <format_date>
+                <enabled>true</enabled>
+                <subtype>num</subtype>
+            </format_date>
+            <label>De:</label>
+            <post>false</post>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#DATA{background:#F00}</style>É necessário definir uma <b>Data</b>.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='DATA' id="data_final" size="10" >
+            <field_type>inputDatePicker</field_type>
+            <format_date>
+                <enabled>true</enabled>
+                <subtype>num</subtype>
+            </format_date>
+            <label>Até:</label>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#DATA{background:#F00}</style>É necessário definir uma <b>Data</b>.<br>]]></message>
+            </not_null>
+        </field>
+         <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div><p>Filtros</p>]]></code>
+        </field>
+        <field name='ID_CONTA'>
+            <field_type>mysql_selectbox</field_type>
+            <post>false</post>
+            <table>{prefixo}_CONTAS</table>
+            <label>Conta:</label>
+            <lbl_collumns>SIGLA</lbl_collumns>
+            <val_collumns>ID</val_collumns>
+            <value></value>
+            <item>
+                <label>Todas</label>
+                <value></value>
+                <selected>true</selected>
+            </item>
+            <order_by>
+                <column>ID</column>
+                <order>asc</order>
+            </order_by>
+        </field>
+        <field name='FATURADO'>
+            <field_type>selectbox</field_type>
+            <label>Ag./ pag.</label>
+            <post>false</post>
+            <item>
+                <label>Todos</label>
+                <value></value>
+		<selected>true</selected>
+            </item>
+            <item>
+                <label>Pago</label>
+                <value>Y</value>
+            </item>
+            <item>
+                <label>Agendado</label>
+                <value>N</value>
+            </item>
+			
+        </field>
+        <field name='JOB' size="33" maxlength="65"><!--Job Realizado-->
+            <field_type>input_autoComplete</field_type>
+            <post>false</post>
+            <label>Job:</label>
+            <relate>
+                <table>{prefixo}_TRABALHOS</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_TRABALHO</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}controle_financeiro/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>JOB</collumns>
+                <order>asc</order>
+            </order_by>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#JOB{background:#F00}</style>O campo <b>Job</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        
+        <field name='FORNECEDOR' size="20" maxlength="30">
+            <field_type>input_autoComplete</field_type>
+            <post>false</post>
+            <label>Fornecedor:</label>
+            <relate>
+                <table>{prefixo}_FORNECEDORES</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_FORNECEDOR</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}controle_financeiro/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>FORNECEDOR</collumns>
+                <order>asc</order>
+            </order_by>
+        </field>
+
+        <field>
+            <field_type>code</field_type>
+            <code><![CDATA[</div><hr class="form_hl"/><div>]]></code>
+        </field>
+        
+        <field name='CLIENTE' size="33" maxlength="65">
+            <field_type>input_autoComplete</field_type>
+            <post>false</post>
+            <label>Cliente:</label>
+            <relate>
+                <table>{prefixo}_CLIENTES</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_CLIENTE</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}{controller_name}/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>CLIENTE</collumns>
+                <order>asc</order>
+            </order_by>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#CLIENTE{background:#F00}</style>O campo <b>Cliente</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name='AGENCIA' size="33" maxlength="65">
+            <field_type>input_autoComplete</field_type>
+            <post>false</post>
+            <label>Agência:</label>
+            <relate>
+                <table>{prefixo}_AGENCIAS</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_AGENCIA</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}{controller_name}/input_autoComplete.json</json_source>
+            <value></value>
+            <order_by>
+                <collumns>CLIENTE</collumns>
+                <order>asc</order>
+            </order_by>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#CLIENTE{background:#F00}</style>O campo <b>Cliente</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+        </field>
+        <field name="btResetar" type="reset">
+            <value>Limpar</value>
+            <field_type>button</field_type>
+            <label></label>
+        </field>
+        <field name="btPrint" type="button" onclick="imprimir_extrato();">
+            <value>Imprimir</value>
+            <field_type>button</field_type>
+            <label></label>
+        </field>
+    </form>
+</root>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<root>
+    <language>pt_br</language>
+    <form name="cad_clientes" id="cad_clientes" method="POST" action='{SELF_URL_ENCODED}'>
+        <table>{prefixo}_FOTOGRAFO</table>
+        <title>Cadastro de Fotografo</title>
+        <field name='CLIENTE' size="40" maxlength="64">
+            <label>Nome:</label>
+            <field_type>input</field_type>
+            <post>true</post>
+            <value></value>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#FOTOGRAFO{background:#F00}</style>O campo <b>Fotografo</b> não pode ficar vazio.<br>]]></message>
+            </not_null>
+            <unique>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#FOTOGRAFO{background:#F00}</style>O <b>Fotografo</b> já está cadastrado no sistema.<br>]]></message>
+            </unique>
+        </field>
+        <field name='CONTRATANTE' size="50" maxlength="100">
+            <field_type>input_autoComplete</field_type>
+            <post>true</post>
+            <relate>
+                <table>{prefixo}_CLIENTES</table>
+                <primary_key>ID</primary_key>
+                <rel_key>ID_CLIENTE</rel_key>
+            </relate>
+            <json_source>{SITE_PATH}{controller_name}/input_autoComplete.json</json_source>
+            <label>Contratante: </label>
+            <value>$_LAST</value>
+            <order_by>
+                <column>CONTRATANTE</column>
+                <order>asc</order>
+            </order_by>
+            <maxLength>10</maxLength>
+            <not_null>
+                <enabled>true</enabled>
+                <message><![CDATA[<style>#CONTRATANTE{background:#F00}</style>O campo <b>Contratante</b> não pode ficar vazio.<br>]]>
+                </message>
+            </not_null>
+        </field>        
+    </form>
+</root>
